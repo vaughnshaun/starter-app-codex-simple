@@ -27,7 +27,7 @@
 
 ## Decision 3: Implement username-password sign-in through a Supabase Edge Function
 
-**Decision**: Add a single Edge Function, `username-sign-in`, and call it only from `src/modules.api.ts`.
+**Decision**: Add a single Edge Function, `username-sign-in`, and call it only from the module API boundary in `app/modules/auth/api.ts`.
 
 **Rationale**: Supabase Auth's password sign-in flow is email- or phone-based. The feature requires username-and-password login. A dedicated Edge Function can normalize the submitted identifier, resolve the username through the `profiles` table, perform the secure password exchange, and return a session payload without exposing direct backend details to UI modules.
 

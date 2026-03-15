@@ -1,7 +1,7 @@
 # Contract: Username Sign-In Edge Function
 
 **Feature**: [spec.md](../spec.md)  
-**Consumer**: `src/modules.api.ts`  
+**Consumer**: `app/modules/auth/api.ts`  
 **Provider**: Supabase Edge Function `username-sign-in`
 
 ## Purpose
@@ -67,4 +67,4 @@ Allow the app to honor the username-and-password login requirement while keeping
 - The function must resolve username-to-user mapping using app-owned profile data, not UI state.
 - The function must return session tokens only when credentials are valid and the account is verified.
 - The function must never return the resolved email address for an invalid login attempt.
-- The wrapper stores the returned session through the Supabase client before route navigation occurs.
+- The auth module API stores the returned session through the Supabase client before route navigation occurs.

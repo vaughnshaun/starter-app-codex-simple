@@ -2,7 +2,7 @@
 
 **Feature**: [spec.md](../spec.md)  
 **Consumer**: Expo Router layouts and screens  
-**Provider**: Session provider and `src/modules.api.ts`
+**Provider**: Session provider and `app/modules/*/api.ts`
 
 ## Route Matrix
 

@@ -5,7 +5,7 @@
 
 ## Goal
 
-Stand up the scaffold locally, verify web and native auth flows against a local Supabase stack, and preserve the required frontend-to-backend boundary through `src/modules.api.ts`.
+Stand up the scaffold locally, verify web and native auth flows against a local Supabase stack, and preserve the required frontend-to-backend boundary through the `app/modules/*/api.ts` files.
 
 ## Prerequisites
 
@@ -69,7 +69,7 @@ npm test
 Recommended sequence:
 
 1. Session provider and route-guard tests
-2. `src/modules.api.ts` contract tests
+2. `app/modules/auth/api.ts` contract tests
 3. `username-sign-in` Edge Function contract tests
 4. Sign-in and protected routing implementation
 5. Registration, verification, and resend flows
@@ -93,6 +93,6 @@ npm run android
 
 ## 7. Boundary Checks
 
-- Confirm that UI modules import only `src/modules.api.ts` for backend work.
+- Confirm that screens and components import backend behavior only through `app/modules/*/api.ts`.
 - Confirm contract tests cover the wrapper and the `username-sign-in` function.
 - Confirm integration tests cover signed-out redirect, verified access, and recovery completion.

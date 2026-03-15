@@ -17,14 +17,14 @@
 
 **Purpose**: Create the Expo and Supabase workspace, toolchain config, and baseline documentation needed before any auth behavior is built.
 
-- [ ] T001 Initialize the Expo Router application dependencies and scripts in package.json
-- [ ] T002 Create the Expo app configuration and TypeScript baseline in app.json
-- [ ] T003 [P] Configure TypeScript, Expo Router, and path aliases in tsconfig.json
-- [ ] T004 [P] Configure Jest Expo, Testing Library, and test setup in jest.config.ts
-- [ ] T005 [P] Add the global test bootstrap and custom matchers in tests/setup.ts
-- [ ] T006 [P] Create the public environment template and validation scaffold in .env.example
-- [ ] T007 [P] Initialize the local Supabase project manifest in supabase/config.toml
-- [ ] T008 [P] Document local bootstrap and validation commands in README.md
+- [x] T001 Initialize the Expo Router application dependencies and scripts in package.json
+- [x] T002 Create the Expo app configuration and TypeScript baseline in app.json
+- [x] T003 [P] Configure TypeScript, Expo Router, and path aliases in tsconfig.json
+- [x] T004 [P] Configure Jest Expo, Testing Library, and test setup in jest.config.ts
+- [x] T005 [P] Add the global test bootstrap and custom matchers in tests/setup.ts
+- [x] T006 [P] Create the public environment template and validation scaffold in .env.example
+- [x] T007 [P] Initialize the local Supabase project manifest in supabase/config.toml
+- [x] T008 [P] Document local bootstrap and validation commands in README.md
 
 ---
 
@@ -34,20 +34,20 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T009 Create failing boundary tests for the session provider and wrapper-only imports in tests/unit/app/providers/session-provider.test.tsx
-- [ ] T010 [P] Create failing contract tests for the auth wrapper in tests/contract/auth-api.contract.test.ts
-- [ ] T011 [P] Create failing contract tests for the username sign-in Edge Function in tests/contract/username-sign-in.contract.test.ts
-- [ ] T012 [P] Create failing integration coverage for auth gating shell behavior, including signed-out redirects and unverified-session blocking, in tests/integration/auth-routing.integration.test.tsx
-- [ ] T013 [P] Create failing local Supabase integration scaffolding for auth flows in tests/integration/local-supabase-auth.integration.test.ts
-- [ ] T014 Implement the environment loader in app/lib/env.ts and the shared query client in app/lib/query-client.ts
-- [ ] T015 [P] Implement the session provider, session state machine, and route guard helpers in app/providers/session-provider.tsx
-- [ ] T016 [P] Implement the root providers and public/protected router layouts in app/_layout.tsx
-- [ ] T017 [P] Implement the protected route group layout with deterministic redirects in app/(app)/_layout.tsx
-- [ ] T018 Create the profile schema, username normalization, and row-level security migration in supabase/migrations/001_create_profiles_and_policies.sql
-- [ ] T019 Implement the username sign-in Edge Function contract in supabase/functions/username-sign-in/index.ts
-- [ ] T020 Implement the auth wrapper types and backend-safe method surface in app/modules/auth/types.ts
-- [ ] T021 Implement the auth wrapper client methods for sign-in, session storage, sign-up handoff, resend verification, and password recovery in app/modules/auth/api.ts
-- [ ] T022 [P] Implement the shared auth hooks over the wrapper layer in app/modules/auth/hooks.ts
+- [x] T009 Create failing boundary tests for the session provider and wrapper-only imports in tests/unit/app/providers/session-provider.test.tsx
+- [x] T010 [P] Create failing contract tests for the auth wrapper in tests/contract/auth-api.contract.test.ts
+- [x] T011 [P] Create failing contract tests for the username sign-in Edge Function in tests/contract/username-sign-in.contract.test.ts
+- [x] T012 [P] Create failing integration coverage for auth gating shell behavior, including signed-out redirects and unverified-session blocking, in tests/integration/auth-routing.integration.test.tsx
+- [x] T013 [P] Create failing local Supabase integration scaffolding for auth flows in tests/integration/local-supabase-auth.integration.test.ts
+- [x] T014 Implement the environment loader in app/lib/env.ts and the shared query client in app/lib/query-client.ts
+- [x] T015 [P] Implement the session provider, session state machine, and route guard helpers in app/providers/session-provider.tsx
+- [x] T016 [P] Implement the root providers and public/protected router layouts in app/_layout.tsx
+- [x] T017 [P] Implement the protected route group layout with deterministic redirects in app/(app)/_layout.tsx
+- [x] T018 Create the profile schema, username normalization, and row-level security migration in supabase/migrations/001_create_profiles_and_policies.sql
+- [x] T019 Implement the username sign-in Edge Function contract in supabase/functions/username-sign-in/index.ts
+- [x] T020 Implement the auth wrapper types and backend-safe method surface in app/modules/auth/types.ts
+- [x] T021 Implement the auth wrapper client methods for sign-in, session storage, sign-up handoff, resend verification, and password recovery in app/modules/auth/api.ts
+- [x] T022 [P] Implement the shared auth hooks over the wrapper layer in app/modules/auth/hooks.ts
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -63,22 +63,22 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T023 [P] [US1] Add failing sign-in screen interaction tests in tests/unit/app/modules/auth/sign-in-screen.test.tsx
-- [ ] T024 [P] [US1] Add failing protected route navigation tests for home and profile, including preserved `next` destinations, in tests/integration/auth-routing.integration.test.tsx
-- [ ] T025 [P] [US1] Add failing session-expiry redirect coverage for protected routes in tests/integration/auth-routing.integration.test.tsx
-- [ ] T026 [P] [US1] Add failing contract tests for the profile wrapper in tests/contract/profile-api.contract.test.ts
-- [ ] T027 [P] [US1] Add failing profile data hook tests covering username, email, and verification status in tests/unit/app/modules/profile/hooks.test.ts
-- [ ] T028 [P] [US1] Add failing profile screen rendering tests for username, email, and verification status in tests/integration/auth-routing.integration.test.tsx
+- [x] T023 [P] [US1] Add failing sign-in screen interaction tests in tests/unit/app/modules/auth/sign-in-screen.test.tsx
+- [x] T024 [P] [US1] Add failing protected route navigation tests for home and profile, including preserved `next` destinations, in tests/integration/auth-routing.integration.test.tsx
+- [x] T025 [P] [US1] Add failing session-expiry redirect coverage for protected routes in tests/integration/auth-routing.integration.test.tsx
+- [x] T026 [P] [US1] Add failing contract tests for the profile wrapper in tests/contract/profile-api.contract.test.ts
+- [x] T027 [P] [US1] Add failing profile data hook tests covering username, email, and verification status in tests/unit/app/modules/profile/hooks.test.ts
+- [x] T028 [P] [US1] Add failing profile screen rendering tests for username, email, and verification status in tests/integration/auth-routing.integration.test.tsx
 
 ### Implementation for User Story 1
 
-- [ ] T029 [P] [US1] Implement the sign-in form component with username/password validation and error states in app/modules/auth/components/sign-in-form.tsx
-- [ ] T030 [US1] Implement the sign-in route and preserved `next` destination handling in app/sign-in.tsx
-- [ ] T031 [P] [US1] Implement the protected home route shell and signed-in navigation in app/(app)/index.tsx
-- [ ] T032 [P] [US1] Implement the profile module wrapper and domain types in app/modules/profile/api.ts and app/modules/profile/types.ts
-- [ ] T033 [US1] Implement the profile data hooks and protected route screen with username, email, and verification status in app/modules/profile/hooks.ts and app/(app)/profile.tsx
-- [ ] T034 [US1] Implement sign-out, session-expiry handling, preserved destination recovery, and protected cache invalidation in app/modules/auth/hooks.ts
-- [ ] T035 [US1] Wire protected-route screens to the finalized session and redirect helpers in app/(app)/_layout.tsx and app/providers/session-provider.tsx
+- [x] T029 [P] [US1] Implement the sign-in form component with username/password validation and error states in app/modules/auth/components/sign-in-form.tsx
+- [x] T030 [US1] Implement the sign-in route and preserved `next` destination handling in app/sign-in.tsx
+- [x] T031 [P] [US1] Implement the protected home route shell and signed-in navigation in app/(app)/index.tsx
+- [x] T032 [P] [US1] Implement the profile module wrapper and domain types in app/modules/profile/api.ts and app/modules/profile/types.ts
+- [x] T033 [US1] Implement the profile data hooks and protected route screen with username, email, and verification status in app/modules/profile/hooks.ts and app/(app)/profile.tsx
+- [x] T034 [US1] Implement sign-out, session-expiry handling, preserved destination recovery, and protected cache invalidation in app/modules/auth/hooks.ts
+- [x] T035 [US1] Wire protected-route screens to the finalized session and redirect helpers in app/(app)/_layout.tsx and app/providers/session-provider.tsx
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -92,21 +92,21 @@
 
 ### Tests for User Story 2 ⚠️
 
-- [ ] T036 [P] [US2] Add failing registration and validation tests in tests/unit/app/modules/auth/sign-up-screen.test.tsx
-- [ ] T037 [P] [US2] Add failing email verification, unverified-route blocking, and resend integration tests in tests/integration/email-verification.integration.test.tsx
-- [ ] T038 [P] [US2] Add failing local Supabase verification callback coverage in tests/integration/local-supabase-auth.integration.test.ts
-- [ ] T039 [P] [US2] Add failing auth wrapper contract coverage for sign-up and resend verification in tests/contract/auth-api.contract.test.ts
-- [ ] T040 [P] [US2] Add failing resend-supersession coverage for stale verification links in tests/integration/email-verification.integration.test.tsx
+- [x] T036 [P] [US2] Add failing registration and validation tests in tests/unit/app/modules/auth/sign-up-screen.test.tsx
+- [x] T037 [P] [US2] Add failing email verification, unverified-route blocking, and resend integration tests in tests/integration/email-verification.integration.test.tsx
+- [x] T038 [P] [US2] Add failing local Supabase verification callback coverage in tests/integration/local-supabase-auth.integration.test.ts
+- [x] T039 [P] [US2] Add failing auth wrapper contract coverage for sign-up and resend verification in tests/contract/auth-api.contract.test.ts
+- [x] T040 [P] [US2] Add failing resend-supersession coverage for stale verification links in tests/integration/email-verification.integration.test.tsx
 
 ### Implementation for User Story 2
 
-- [ ] T041 [P] [US2] Implement the sign-up form component with username, email, and password rules in app/modules/auth/components/sign-up-form.tsx
-- [ ] T042 [US2] Implement the registration route and pending-verification UX in app/sign-up.tsx
-- [ ] T043 [P] [US2] Extend the auth wrapper types for registration and verification outcomes in app/modules/auth/types.ts
-- [ ] T044 [US2] Extend the auth wrapper methods for profile creation, resend verification, callback exchange, and stale-link rejection in app/modules/auth/api.ts
-- [ ] T045 [P] [US2] Implement the verification status panel and resend action in app/modules/auth/components/verification-status.tsx
-- [ ] T046 [US2] Implement the verification callback route for web URLs and native deep links in app/verify-email.tsx
-- [ ] T047 [US2] Update the session provider redirect rules to block unverified sessions from protected routes in app/providers/session-provider.tsx
+- [x] T041 [P] [US2] Implement the sign-up form component with username, email, and password rules in app/modules/auth/components/sign-up-form.tsx
+- [x] T042 [US2] Implement the registration route and pending-verification UX in app/sign-up.tsx
+- [x] T043 [P] [US2] Extend the auth wrapper types for registration and verification outcomes in app/modules/auth/types.ts
+- [x] T044 [US2] Extend the auth wrapper methods for profile creation, resend verification, callback exchange, and stale-link rejection in app/modules/auth/api.ts
+- [x] T045 [P] [US2] Implement the verification status panel and resend action in app/modules/auth/components/verification-status.tsx
+- [x] T046 [US2] Implement the verification callback route for web URLs and native deep links in app/verify-email.tsx
+- [x] T047 [US2] Update the session provider redirect rules to block unverified sessions from protected routes in app/providers/session-provider.tsx
 
 **Checkpoint**: At this point, User Stories 1 and 2 should both work independently
 
@@ -120,19 +120,19 @@
 
 ### Tests for User Story 3 ⚠️
 
-- [ ] T048 [P] [US3] Add failing forgot-password form tests with neutral response assertions in tests/unit/app/modules/auth/forgot-password-screen.test.tsx
-- [ ] T049 [P] [US3] Add failing reset-password flow integration tests in tests/integration/forgot-password.integration.test.tsx
-- [ ] T050 [P] [US3] Add failing local Supabase password reset coverage in tests/integration/local-supabase-auth.integration.test.ts
-- [ ] T051 [P] [US3] Add failing auth wrapper contract coverage for recovery and reset completion in tests/contract/auth-api.contract.test.ts
+- [x] T048 [P] [US3] Add failing forgot-password form tests with neutral response assertions in tests/unit/app/modules/auth/forgot-password-screen.test.tsx
+- [x] T049 [P] [US3] Add failing reset-password flow integration tests in tests/integration/forgot-password.integration.test.tsx
+- [x] T050 [P] [US3] Add failing local Supabase password reset coverage in tests/integration/local-supabase-auth.integration.test.ts
+- [x] T051 [P] [US3] Add failing auth wrapper contract coverage for recovery and reset completion in tests/contract/auth-api.contract.test.ts
 
 ### Implementation for User Story 3
 
-- [ ] T052 [P] [US3] Implement the forgot-password form component and neutral success messaging in app/modules/auth/components/forgot-password-form.tsx
-- [ ] T053 [US3] Implement the forgot-password route in app/forgot-password.tsx
-- [ ] T054 [P] [US3] Implement the reset-password form component with token-state validation in app/modules/auth/components/reset-password-form.tsx
-- [ ] T055 [US3] Extend the auth wrapper methods for recovery request and password reset completion in app/modules/auth/api.ts
-- [ ] T056 [US3] Implement the reset-password callback route for browser and native deep-link flows in app/reset-password.tsx
-- [ ] T057 [US3] Invalidate stale sessions and reject superseded credentials after reset in app/providers/session-provider.tsx
+- [x] T052 [P] [US3] Implement the forgot-password form component and neutral success messaging in app/modules/auth/components/forgot-password-form.tsx
+- [x] T053 [US3] Implement the forgot-password route in app/forgot-password.tsx
+- [x] T054 [P] [US3] Implement the reset-password form component with token-state validation in app/modules/auth/components/reset-password-form.tsx
+- [x] T055 [US3] Extend the auth wrapper methods for recovery request and password reset completion in app/modules/auth/api.ts
+- [x] T056 [US3] Implement the reset-password callback route for browser and native deep-link flows in app/reset-password.tsx
+- [x] T057 [US3] Invalidate stale sessions and reject superseded credentials after reset in app/providers/session-provider.tsx
 
 **Checkpoint**: All user stories should now be independently functional
 
@@ -142,13 +142,13 @@
 
 **Purpose**: Finish shared validation, platform fit, and end-to-end verification across all auth flows.
 
-- [ ] T058 [P] Add shared auth form primitives and loading/error states for cross-platform consistency in app/modules/auth/components/auth-form-shell.tsx
-- [ ] T059 [P] Add route constants, redirect helpers, and deep-link utilities in app/modules/auth/navigation.ts
-- [ ] T060 Add performance verification for auth state resolution, protected-route transitions, and auth form feedback in tests/integration/auth-performance.integration.test.ts
-- [ ] T061 [P] Add native deep-link parity tests for verification and password reset in tests/integration/native-auth-links.integration.test.tsx
-- [ ] T062 Harden rate-limit, expired-token, duplicate-account, and stale-link error mapping across auth screens in app/modules/auth/api.ts
-- [ ] T063 [P] Add end-to-end quickstart verification notes for web, native, and local Supabase flows in specs/002-mobile-web-auth-scaffold/quickstart.md
-- [ ] T064 Run the full test suite and lint command from package.json and record follow-up fixes in README.md
+- [x] T058 [P] Add shared auth form primitives and loading/error states for cross-platform consistency in app/modules/auth/components/auth-form-shell.tsx
+- [x] T059 [P] Add route constants, redirect helpers, and deep-link utilities in app/modules/auth/navigation.ts
+- [x] T060 Add performance verification for auth state resolution, protected-route transitions, and auth form feedback in tests/integration/auth-performance.integration.test.ts
+- [x] T061 [P] Add native deep-link parity tests for verification and password reset in tests/integration/native-auth-links.integration.test.tsx
+- [x] T062 Harden rate-limit, expired-token, duplicate-account, and stale-link error mapping across auth screens in app/modules/auth/api.ts
+- [x] T063 [P] Add end-to-end quickstart verification notes for web, native, and local Supabase flows in specs/002-mobile-web-auth-scaffold/quickstart.md
+- [x] T064 Run the full test suite and lint command from package.json and record follow-up fixes in README.md
 
 ---
 

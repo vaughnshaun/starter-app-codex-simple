@@ -23,9 +23,11 @@ Create an Expo Router TypeScript app and pin the core packages called for in the
 npx create-expo-app@latest app --template
 cd app
 npx expo install expo@^55 expo-router react react-dom react-native react-native-web
-npm install @supabase/supabase-js@2.78.1 @tanstack/react-query@^5 @react-native-async-storage/async-storage react-native-url-polyfill
+npm install @supabase/supabase-js@2.78.0 @tanstack/react-query@^5 @react-native-async-storage/async-storage react-native-url-polyfill@^3
 npm install -D jest-expo @testing-library/react-native @testing-library/jest-native
 ```
+
+`@supabase/supabase-js@2.78.1` is referenced in the planning docs but is not published on npm. Use `2.78.0` for a working install unless the feature requirements are updated to a different published version.
 
 ## 2. Initialize The Supabase Backend
 
@@ -96,3 +98,9 @@ npm run android
 - Confirm that screens and components import backend behavior only through `app/modules/*/api.ts`.
 - Confirm contract tests cover the wrapper and the `username-sign-in` function.
 - Confirm integration tests cover signed-out redirect, verified access, and recovery completion.
+
+## 8. Verification Notes
+
+- Web validation: run `npm run web`, register a user, open the verification or reset callback URL in the browser, and confirm redirects land on `/` or `/sign-in` as expected.
+- Native validation: open the Expo app in iOS Simulator or Android Emulator and confirm `starterapp://verify-email?...` and `starterapp://reset-password?...` links complete the same flows.
+- Local backend validation: run `supabase start`, confirm the `public.profiles` migration is applied, and verify the `username-sign-in` function contract through the automated test suite before wiring a remote project.

@@ -86,6 +86,13 @@ An existing user can recover access to their account by requesting a password re
 - **FR-017**: The system MUST provide a sign-out action that ends the current session and removes access to protected screens.
 - **FR-018**: The system MUST present a consistent set of authentication destinations and protected destinations across web and mobile so that the same core user journeys are available on both.
 
+### Non-Functional Requirements
+
+- **NFR-001**: The system MUST resolve the initial auth state and protected-route decision within 2 seconds on cold start under the local test environment defined for this feature.
+- **NFR-002**: The system MUST complete protected-route transitions within 300 milliseconds once session state is known under the local test environment defined for this feature.
+- **NFR-003**: The system MUST render visible validation or submission feedback for sign-in, registration, verification, and password reset actions within 1 second p50, excluding email delivery latency.
+- **NFR-004**: Automated tests MUST verify route guarding for signed-out users, unverified users, and session-expiry cases before implementation is considered complete.
+
 ### Key Entities *(include if feature involves data)*
 
 - **User Account**: Represents an end user identity with username, email address, password credential, verification status, and access state.
@@ -110,3 +117,4 @@ An existing user can recover access to their account by requesting a password re
 - **SC-002**: During acceptance testing, 100% of attempts by signed-out or unverified users to open the home or profile screen are blocked before protected content is shown.
 - **SC-003**: At least 90% of test users can sign in, navigate from home to profile, sign out, and sign back in on both web and mobile without written assistance.
 - **SC-004**: At least 90% of valid password recovery attempts are completed successfully on the first try during user acceptance testing.
+- **SC-005**: During automated verification in the local test environment, auth-state resolution and protected-route gating complete within 2 seconds on cold start, protected-route transitions complete within 300 milliseconds once session state is known, and auth forms show visible feedback within 1 second p50.

@@ -7,7 +7,7 @@
 
 ## Summary
 
-Build a single Expo SDK 55 application that runs on web and mobile, uses Expo Router for public and protected navigation, and organizes feature code under `app/modules/{module_name}`. Supabase Auth and TanStack Query will power account lifecycle and authenticated data access, while module-local API layers keep backend behavior out of screens and components.
+Build a single Expo SDK 55 application that runs on web and mobile, uses Expo Router for public and protected navigation, and organizes feature code under `app/modules/{module_name}`. Supabase Auth and TanStack Query will power the account lifecycle and session-aware profile access, while module-local API layers keep backend behavior out of screens and components.
 
 ## Technical Context
 
@@ -68,11 +68,6 @@ app/
 │   │   ├── hooks.ts
 │   │   ├── types.ts
 │   │   └── components/
-│   ├── home/
-│   │   ├── api.ts
-│   │   ├── hooks.ts
-│   │   ├── types.ts
-│   │   └── components/
 │   └── profile/
 │       ├── api.ts
 │       ├── hooks.ts
@@ -94,7 +89,6 @@ supabase/
 tests/
 ├── contract/
 │   ├── auth-api.contract.test.ts
-│   ├── home-api.contract.test.ts
 │   ├── profile-api.contract.test.ts
 │   └── username-sign-in.contract.test.ts
 ├── integration/
@@ -109,18 +103,17 @@ tests/
     ├── app/modules/auth/sign-in-screen.test.tsx
     ├── app/modules/auth/sign-up-screen.test.tsx
     ├── app/modules/auth/hooks.test.ts
-    ├── app/modules/home/hooks.test.ts
     ├── app/modules/profile/hooks.test.ts
     └── app/providers/session-provider.test.tsx
 ```
 
-**Structure Decision**: Use one Expo application for all UI and routing, with feature code grouped under `app/modules/{module_name}` so each domain owns its `api.ts`, `hooks.ts`, `types.ts`, and `components/` boundary. Keep Supabase schema and Edge Function assets under `supabase/` so backend logic remains separate from UI modules.
+**Structure Decision**: Use one Expo application for all UI and routing, with feature code grouped under `app/modules/{module_name}` so domains with backend interaction own their `api.ts`, `hooks.ts`, `types.ts`, and `components/` boundary. Keep Supabase schema and Edge Function assets under `supabase/` so backend logic remains separate from UI modules, while the protected home screen remains a route-level screen without its own backend wrapper.
 
 ## Implementation Strategy
 
 1. Establish the app shell first: Expo Router layouts, TanStack Query provider, session provider, and the initial `app/modules/auth` boundary with failing tests in place before implementation.
 2. Add the backend foundation next: `profiles` table, uniqueness rules for usernames, row-level security, and the `username-sign-in` Edge Function with contract tests first.
-3. Deliver the P1 slice by wiring sign-in, protected routing, preserved `next` navigation, `app/modules/home`, `app/modules/profile`, and sign-out behavior through module API layers.
+3. Deliver the P1 slice by wiring sign-in, protected routing, preserved `next` navigation, the protected home route, `app/modules/profile`, and sign-out behavior through module API layers where backend interaction exists.
 4. Deliver the P2 slice by adding sign-up, pending-verification handling, resend verification, and verification callback behavior for both web and native deep links.
 5. Deliver the P3 slice by adding forgot-password request, reset-password completion, neutral recovery messaging, and cache/session invalidation after reset.
 

@@ -1,0 +1,1 @@
+Shouldn't you follow the api.ts, types.ts, hooks.ts components/ module folder structure

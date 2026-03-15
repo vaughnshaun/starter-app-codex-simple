@@ -56,7 +56,8 @@ compliance with the boundary rules above.
 - Frontend and backend code MUST remain in separate modules, directories, or
   services whenever both concerns exist in the same project.
 - Frontend UI modules MUST depend on wrapper/client modules instead of backend
-  implementations. Meaning the Supabase code should go in the `src/modules.api.ts` file.
+  implementations. Meaning Supabase access should live in files such as
+  `app/modules/auth/api.ts`.
 - Wrapper/client modules MUST expose domain-oriented methods and hide backend
   implementation details from the frontend.
 - Shared contracts or types MUST be defined in a neutral boundary and MUST NOT
@@ -70,7 +71,7 @@ Spec
 - Specs drive planning, tasks, and implementation.
 
 Module
-- A source code organization unit under `src/modules/*`.
+- A source code organization unit under `app/modules/*`.
 - Modules group related implementation artifacts such as APIs, hooks, types, and components.
 - Modules do not define the scope of a spec.
 

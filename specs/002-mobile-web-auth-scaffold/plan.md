@@ -14,7 +14,7 @@ Build a single Expo SDK 55 application that runs on web and mobile, uses Expo Ro
 **Language/Version**: TypeScript 5.x, Expo SDK 55.x, React 19.2.x, React Native 0.83, Node.js 20.19+  
 **Primary Dependencies**: Expo Router, `@supabase/supabase-js@2.78.1`, `@tanstack/react-query@5`, `@react-native-async-storage/async-storage`, `react-native-url-polyfill`, `jest-expo`, React Native Testing Library  
 **Storage**: Supabase Postgres for app data, Supabase Auth managed identities/tokens, AsyncStorage on native, browser localStorage on web  
-**Testing**: `jest-expo` for unit and component tests, React Native Testing Library for screen behavior, contract tests for module API layers and the Edge Function, local Supabase integration tests for auth flows  
+**Testing**: `jest-expo` for unit and component tests, React Native Testing Library for screen behavior, contract tests for module API layers and the Edge Function, local Supabase integration tests for auth flows, and performance/native deep-link verification for the auth-critical journeys  
 **Target Platform**: iOS and Android through Expo, plus modern desktop and mobile browsers through Expo web  
 **Project Type**: Cross-platform Expo application with a managed Supabase backend  
 **Performance Goals**: Resolve initial auth state and route guard decision within 2 seconds on cold start, complete protected route transitions within 300 ms once session state is known, and return visible auth form feedback within 1 second p50 excluding email delivery latency  
@@ -99,9 +99,15 @@ tests/
 │   └── username-sign-in.contract.test.ts
 ├── integration/
 │   ├── auth-routing.integration.test.tsx
+│   ├── auth-performance.integration.test.ts
 │   ├── email-verification.integration.test.tsx
-│   └── forgot-password.integration.test.tsx
+│   ├── forgot-password.integration.test.tsx
+│   ├── local-supabase-auth.integration.test.ts
+│   └── native-auth-links.integration.test.tsx
 └── unit/
+    ├── app/modules/auth/forgot-password-screen.test.tsx
+    ├── app/modules/auth/sign-in-screen.test.tsx
+    ├── app/modules/auth/sign-up-screen.test.tsx
     ├── app/modules/auth/hooks.test.ts
     ├── app/modules/home/hooks.test.ts
     ├── app/modules/profile/hooks.test.ts

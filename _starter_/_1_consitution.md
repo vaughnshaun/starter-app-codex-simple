@@ -1,0 +1,1 @@
+Non negotiatables is that you should follow Test Drven Development. The frontend and backend should have a separation of concern. Main frontend code should not directly call backend code. There should be a then wrapper to hide backend code from frontend

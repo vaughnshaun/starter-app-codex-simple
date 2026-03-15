@@ -1,0 +1,1 @@
+A scaffold for an application that can be mobile and web that includes routing, simple username and password login. Authenticated users can access the home screen and profile screen. Also implement email verification and forgot password. 

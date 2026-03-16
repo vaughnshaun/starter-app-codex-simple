@@ -6,7 +6,7 @@ import { getEnv, validateEnv } from "@/app/lib/env";
 import { storeProfile } from "@/app/modules/profile/api";
 import type { StoredProfile } from "@/app/modules/profile/types";
 
-import type { AuthProfile, SignUpInput } from "./types";
+import type { AuthProfile, ResendVerificationInput, SignUpInput } from "./types";
 
 let supabaseClient:
   | ReturnType<typeof createClient>
@@ -77,4 +77,24 @@ export async function signUpUser(input: SignUpInput): Promise<AuthProfile> {
   await storeProfile(toStoredProfile(profile));
 
   return profile;
+}
+
+export async function resendVerificationEmail(
+  input: ResendVerificationInput
+): Promise<void> {
+  const client = getSupabaseClient();
+  const env = validateEnv(getEnv());
+  const trimmedUsername = input.username.trim();
+
+  const { error } = await client.auth.resend({
+    email: trimmedUsername,
+    type: "signup",
+    options: {
+      emailRedirectTo: env.siteUrl
+    }
+  });
+
+  if (error) {
+    throw error;
+  }
 }

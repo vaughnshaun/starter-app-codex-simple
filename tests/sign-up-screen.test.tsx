@@ -77,4 +77,37 @@ describe("SignUpScreen", () => {
     expect(await screen.findByText("Username: new@example.com")).toBeOnTheScreen();
     expect(screen.getByText("User ID: user-999")).toBeOnTheScreen();
   });
+
+  test("shows resend verification and submits it without checking verification status", async () => {
+    const storedProfile: StoredProfile = {
+      userId: "user-123",
+      username: "saved@example.com",
+      email: "saved@example.com",
+      createdAt: "2026-03-16T10:00:00.000Z",
+      emailConfirmedAt: null
+    };
+
+    jest.spyOn(profileApi, "getStoredProfile").mockResolvedValue(storedProfile);
+    jest.spyOn(authApi, "resendVerificationEmail").mockResolvedValue();
+
+    renderWithProviders();
+
+    const resendButton = await screen.findByRole("button", {
+      name: "Resend Verification"
+    });
+
+    expect(resendButton).toBeOnTheScreen();
+    expect(resendButton).toBeEnabled();
+
+    fireEvent.changeText(screen.getByLabelText("Username"), "saved@example.com");
+    fireEvent.press(resendButton);
+
+    await waitFor(() => {
+      expect(authApi.resendVerificationEmail).toHaveBeenCalled();
+    });
+
+    expect(jest.mocked(authApi.resendVerificationEmail).mock.calls[0]?.[0]).toEqual({
+      username: "saved@example.com"
+    });
+  });
 });

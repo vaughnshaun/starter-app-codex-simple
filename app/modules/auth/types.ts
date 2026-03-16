@@ -3,6 +3,10 @@ export interface SignUpInput {
   password: string;
 }
 
+export interface ResendVerificationInput {
+  username: string;
+}
+
 export interface AuthProfile {
   userId: string;
   username: string;

@@ -2,8 +2,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { profileQueryKey } from "@/app/modules/profile/hooks";
 
-import { signUpUser } from "./api";
-import type { AuthProfile, SignUpInput } from "./types";
+import { resendVerificationEmail, signUpUser } from "./api";
+import type { AuthProfile, ResendVerificationInput, SignUpInput } from "./types";
 
 export function useSignUp() {
   const queryClient = useQueryClient();
@@ -13,5 +13,11 @@ export function useSignUp() {
     onSuccess: (profile) => {
       queryClient.setQueryData(profileQueryKey, profile);
     }
+  });
+}
+
+export function useResendVerification() {
+  return useMutation<void, Error, ResendVerificationInput>({
+    mutationFn: resendVerificationEmail
   });
 }

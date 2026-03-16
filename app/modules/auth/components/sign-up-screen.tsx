@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { useSignUp } from "@/app/modules/auth/hooks";
+import { useResendVerification, useSignUp } from "@/app/modules/auth/hooks";
 import { useStoredProfile } from "@/app/modules/profile/hooks";
 
 export function SignUpScreen() {
@@ -18,12 +18,20 @@ export function SignUpScreen() {
   const [password, setPassword] = useState("");
   const storedProfileQuery = useStoredProfile();
   const signUpMutation = useSignUp();
+  const resendVerificationMutation = useResendVerification();
 
   const handleSignUp = () => {
     signUpMutation.reset();
     void signUpMutation.mutateAsync({
       username,
       password
+    });
+  };
+
+  const handleResendVerification = () => {
+    resendVerificationMutation.reset();
+    void resendVerificationMutation.mutateAsync({
+      username
     });
   };
 
@@ -79,8 +87,26 @@ export function SignUpScreen() {
             )}
           </Pressable>
 
+          <Pressable
+            accessibilityRole="button"
+            onPress={handleResendVerification}
+            style={({ pressed }) => [
+              styles.secondaryButton,
+              pressed ? styles.secondaryButtonPressed : null
+            ]}
+          >
+            {resendVerificationMutation.isPending ? (
+              <ActivityIndicator color="#a24a2d" />
+            ) : (
+              <Text style={styles.secondaryButtonText}>Resend Verification</Text>
+            )}
+          </Pressable>
+
           {signUpMutation.error ? (
             <Text style={styles.errorText}>{signUpMutation.error.message}</Text>
+          ) : null}
+          {resendVerificationMutation.error ? (
+            <Text style={styles.errorText}>{resendVerificationMutation.error.message}</Text>
           ) : null}
 
           <View style={styles.profileSection}>
@@ -176,6 +202,22 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
+    fontSize: 16,
+    fontWeight: "700"
+  },
+  secondaryButton: {
+    alignItems: "center",
+    backgroundColor: "#fff7ef",
+    borderColor: "#d9b59d",
+    borderRadius: 14,
+    borderWidth: 1,
+    paddingVertical: 16
+  },
+  secondaryButtonPressed: {
+    opacity: 0.88
+  },
+  secondaryButtonText: {
+    color: "#a24a2d",
     fontSize: 16,
     fontWeight: "700"
   },

@@ -85,7 +85,56 @@ The system should prefer the following technologies:
 
 - Mobile framework: Expo with Expo Router
 - Backend platform: Supabase
+- Language: TypeScript
 - Server-state management: TanStack Query
+  - Fetch operations should use Supabase queries when necessary unless an edge function is needed
+  - The fetch operations should be wrapped in a function and stored in the proper `api.ts` file. For example:
+    ```JavaScript
+    async function getTrips() {
+    const { data, error } = await supabase
+      .from("trips")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+      if (error) throw error;
+      return data;
+    }
+    ```
+  - The client API layer should be wrapped in a useQuery hook and stored in the proper `api.ts`. For example
+    ```JavaScript
+    export function useTrips() {
+      return useQuery({
+       queryKey: ["trips"],
+       queryFn: getTrips,
+      });
+    }
+   ```
+  - The mutation operations should be wrapped in a function and stored in the proper `api.ts` file. For example:
+    ```JavaScript
+    async function createTrip(trip: NewTrip) {
+      const { data, error } = await supabase
+        .from("trips")
+        .insert(trip)
+        .select()
+        .single();
+
+      if (error) throw error;
+      return data;
+    }
+    ```
+  - The client API layer should be wrapped in a useMutation hook and stored in the proper `api.ts`. For example
+    ```JavaScript
+    export function useCreateTrip() {
+      const queryClient = useQueryClient();
+
+      return useMutation({
+        mutationFn: createTrip,
+        onSuccess: () => {
+          queryClient.invalidateQueries({ queryKey: ["trips"] });
+        },
+      });
+    }
+   ```
 - Client-state management: lightweight solutions such as Zustand or Context
 
 Technology choices may evolve, but must preserve separation of concerns and

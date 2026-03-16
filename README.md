@@ -4,6 +4,15 @@ Cross-platform Expo auth scaffold for web and mobile with protected routing, use
 
 ## Bootstrap
 
+Local
+```bash
+npm install
+cp .env.example .env
+supabase start
+npm run web
+```
+
+Remote
 ```bash
 npm install
 cp .env.example .env

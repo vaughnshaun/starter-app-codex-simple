@@ -78,3 +78,13 @@ Apple 403 detected - Access forbidden. Unable to process request - PLA Update av
 4. Sign in with the same credentials.
 5. Confirm successful navigation to `/(app)`.
 6. Sign out and confirm the app returns to the login route.
+
+#### Hello world endpoint
+
+1. Start the local Supabase stack.
+2. Serve or deploy the `hello-world` edge function.
+3. Open the sign-up screen.
+4. Press **Resend Verification** and confirm it still works.
+5. Press **Test Hello World**.
+6. Confirm a success alert shows `Hello, world!` when the active user session is valid.
+7. Confirm an error alert appears when no valid session is available or the endpoint returns an error.

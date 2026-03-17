@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {
   ActivityIndicator,
+  Alert,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -10,7 +11,11 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { useResendVerification, useSignUp } from "@/app/modules/auth/hooks";
+import {
+  useHelloWorld,
+  useResendVerification,
+  useSignUp
+} from "@/app/modules/auth/hooks";
 import { useStoredProfile } from "@/app/modules/profile/hooks";
 
 export function SignUpScreen() {
@@ -19,6 +24,7 @@ export function SignUpScreen() {
   const storedProfileQuery = useStoredProfile();
   const signUpMutation = useSignUp();
   const resendVerificationMutation = useResendVerification();
+  const helloWorldMutation = useHelloWorld();
 
   const handleSignUp = () => {
     signUpMutation.reset();
@@ -32,6 +38,18 @@ export function SignUpScreen() {
     resendVerificationMutation.reset();
     void resendVerificationMutation.mutateAsync({
       username
+    });
+  };
+
+  const handleHelloWorld = () => {
+    helloWorldMutation.reset();
+    helloWorldMutation.mutate(undefined, {
+      onError: (error) => {
+        Alert.alert("Hello World Error", error.message);
+      },
+      onSuccess: ({ message }) => {
+        Alert.alert("Hello World", message);
+      }
     });
   };
 
@@ -99,6 +117,23 @@ export function SignUpScreen() {
               <ActivityIndicator color="#a24a2d" />
             ) : (
               <Text style={styles.secondaryButtonText}>Resend Verification</Text>
+            )}
+          </Pressable>
+
+          <Pressable
+            accessibilityRole="button"
+            disabled={helloWorldMutation.isPending}
+            onPress={handleHelloWorld}
+            style={({ pressed }) => [
+              styles.secondaryButton,
+              pressed ? styles.secondaryButtonPressed : null,
+              helloWorldMutation.isPending ? styles.buttonDisabled : null
+            ]}
+          >
+            {helloWorldMutation.isPending ? (
+              <ActivityIndicator color="#a24a2d" />
+            ) : (
+              <Text style={styles.secondaryButtonText}>Test Hello World</Text>
             )}
           </Pressable>
 

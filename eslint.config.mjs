@@ -23,13 +23,18 @@ export default [
         URL: "readonly",
         afterEach: "readonly",
         beforeEach: "readonly",
+        Console: "readonly",
         console: "readonly",
         describe: "readonly",
         expect: "readonly",
+        fetch: "readonly",
+        Headers: "readonly",
         jest: "readonly",
         module: "readonly",
         process: "readonly",
+        Request: "readonly",
         require: "readonly",
+        Response: "readonly",
         test: "readonly"
       }
     },

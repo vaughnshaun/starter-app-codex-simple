@@ -2,8 +2,13 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { profileQueryKey } from "@/app/modules/profile/hooks";
 
-import { resendVerificationEmail, signUpUser } from "./api";
-import type { AuthProfile, ResendVerificationInput, SignUpInput } from "./types";
+import { callHelloWorldEndpoint, resendVerificationEmail, signUpUser } from "./api";
+import type {
+  AuthProfile,
+  HelloWorldResponse,
+  ResendVerificationInput,
+  SignUpInput
+} from "./types";
 
 export function useSignUp() {
   const queryClient = useQueryClient();
@@ -19,5 +24,11 @@ export function useSignUp() {
 export function useResendVerification() {
   return useMutation<void, Error, ResendVerificationInput>({
     mutationFn: resendVerificationEmail
+  });
+}
+
+export function useHelloWorld() {
+  return useMutation<HelloWorldResponse, Error, void>({
+    mutationFn: callHelloWorldEndpoint
   });
 }

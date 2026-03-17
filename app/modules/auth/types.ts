@@ -14,3 +14,7 @@ export interface AuthProfile {
   createdAt: string | null;
   emailConfirmedAt: string | null;
 }
+
+export interface HelloWorldResponse {
+  message: string;
+}

@@ -43,3 +43,13 @@ export function validateEnv(env: AppEnv = getEnv()): AppEnv {
   return env;
 }
 
+export function getSupabaseFunctionUrl(
+  functionName: string,
+  env: AppEnv = getEnv()
+): string {
+  const validatedEnv = validateEnv(env);
+  const normalizedBaseUrl = validatedEnv.supabaseUrl.replace(/\/$/, "");
+
+  return `${normalizedBaseUrl}/functions/v1/${functionName}`;
+}
+
